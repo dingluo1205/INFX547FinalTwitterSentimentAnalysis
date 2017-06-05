@@ -92,7 +92,7 @@ d3.csv("BoxOffice.csv", function(error, data) {
          .attr("cx", function(d) { return x1(d.date); })
          .attr("cy", function(d) { return y(d.box); })
 		.on("mouseover", function(d) {		
-			dot11.attr('r',10);
+			d3.select(this).attr('r',10)
             div.transition()		
                 .duration(100)		
                 .style("opacity", .9);	
@@ -140,7 +140,7 @@ d3.csv("BoxOffice.csv", function(error, data) {
          .attr("cy", function(d) { return y(d.pred); })
 		 .attr('fill','grey')
 		.on("mouseover", function(d) {	
-			dot4.attr('r',10);	
+			d3.select(this).attr('r',10)	
             div.transition()		
                 .duration(100)		
                 .style("opacity", .9);	
