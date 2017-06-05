@@ -1,18 +1,19 @@
 // First Part: Create line chart 
 
 // Set the dimensions of the canvas / graph
+function draw1(){
 var	margin = {top: 30, right: 10, bottom: 30, left: 80},
 	width = 1300 - margin.left - margin.right,
 	height = 270 - margin.top - margin.bottom;
  
 // Parse the date / time
 //var	parseDate = d3.timeParse("%Y-%m-%d");
-var parseDate1 = d3.timeParse("%d-%b-%y");
+var parseTime = d3.timeParse("%d-%b-%y");
 //var	parseDate = d3.timeParse("%m/%d/%y");
 var formatTime = d3.timeFormat("%e %B");
  
 // Set the ranges
-var	x = d3.scaleTime().range([0, width]);
+var	x1 = d3.scaleTime().range([0, width]);
 var	y = d3.scaleLinear().range([height, 0]);
  
 // Define the axes
@@ -24,12 +25,12 @@ var	y = d3.scaleLinear().range([height, 0]);
  
 // Define the line
 var	valueline = d3.line()
-	.x(function(d) { return x(d.date); })
+	.x(function(d) { return x1(d.date); })
 	.y(function(d) { return y(d.box); });
 
 
 var	valueline4 = d3.line()
-	.x(function(d) { return x(d.date); })
+	.x(function(d) { return x1(d.date); })
 	.y(function(d) { return y(d.pred); });
 
     
@@ -48,16 +49,16 @@ var div = d3.select("#line1").append("div")
 // Get the data
 d3.csv("BoxOffice.csv", function(error, data) {
 	data.forEach(function(d) {
-		d.date = parseDate1(d.date);
+		d.date = parseTime(d.date);
 	   // d.date = d.date;
-		console.log(d.date)
+	   console.log(d.date)
 		d.box = +d.box;
 		d.pred = +d.pred;
 	});
     
  
 	// Scale the range of the data
-	x.domain(d3.extent(data, function(d) { return d.date; }));
+	x1.domain(d3.extent(data, function(d) { return d.date; }));
 //	y.domain([0, d3.max(data, function(d) { return d.box; })]);
 	y.domain([0,56078520]);
 //	y1.domain([0, d3.max(data, function(d) { return d.positive; })]);
@@ -83,7 +84,7 @@ d3.csv("BoxOffice.csv", function(error, data) {
 		 .data(data)
          .enter().append('circle')
          .attr("r", 3)
-         .attr("cx", function(d) { return x(d.date); })
+         .attr("cx", function(d) { return x1(d.date); })
          .attr("cy", function(d) { return y(d.box); })
 		.on("mouseover", function(d) {		
             div.transition()		
@@ -128,7 +129,7 @@ d3.csv("BoxOffice.csv", function(error, data) {
 		 .data(data)
          .enter().append('circle')
          .attr("r", 3)
-         .attr("cx", function(d) { return x(d.date); })
+         .attr("cx", function(d) { return x1(d.date); })
          .attr("cy", function(d) { return y(d.pred); })
 		 .attr('fill','grey')
 		.on("mouseover", function(d) {		
@@ -150,7 +151,7 @@ d3.csv("BoxOffice.csv", function(error, data) {
 	svg.append("g")		
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
-		.call(d3.axisBottom(x));
+		.call(d3.axisBottom(x1));
  
 	// Add the Y Axis
 	svg.append("g")		
@@ -234,8 +235,7 @@ svg.append('text')
 
 
 
-
-
-
         });
 
+
+};
