@@ -367,7 +367,7 @@ svg.append('text')
    .text('Sensitivity-P/N');
 
 svg.append('text')
-   .attr('x',width-70)
+   .attr('x',width-80)
    .attr('y',0)
    .attr("font-size",10)
    .style('fill','black')
