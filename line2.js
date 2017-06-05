@@ -1,7 +1,7 @@
 // First Part: Create line chart 
 function draw2(){
 // Set the dimensions of the canvas / graph
-var	margin = {top: 30, right: 30, bottom: 30, left: 80},
+var	margin = {top: 30, right: 80, bottom: 30, left: 80},
 	width = 1300 - margin.left - margin.right,
 	height = 270 - margin.top - margin.bottom;
  
