@@ -8,11 +8,10 @@ var	margin = {top: 30, right: 10, bottom: 30, left: 80},
  
 // Parse the date / time
 //var	parseDate = d3.timeParse("%Y-%m-%d");
-<<<<<<< HEAD
+
 var parseDate1 = d3.timeParse("%d-%b-%y");
-=======
-var parseTime = d3.timeParse("%d-%b-%y");
->>>>>>> refs/remotes/origin/master
+
+
 //var	parseDate = d3.timeParse("%m/%d/%y");
 var formatTime = d3.timeFormat("%e %B");
  
@@ -53,11 +52,9 @@ var div = d3.select("#line1").append("div")
 // Get the data
 d3.csv("BoxOffice.csv", function(error, data) {
 	data.forEach(function(d) {
-<<<<<<< HEAD
+
 		d.date = parseDate1(d.date);
-=======
-		d.date = parseTime(d.date);
->>>>>>> refs/remotes/origin/master
+
 	   // d.date = d.date;
 	   console.log(d.date)
 		d.box = +d.box;
