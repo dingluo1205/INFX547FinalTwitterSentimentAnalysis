@@ -97,7 +97,8 @@ d3.csv("BoxOffice.csv", function(error, data) {
          .attr("cx", function(d) { return x(d.date); })
          .attr("cy", function(d) { return y1(d.positive); })
          .attr('fill','#66bd63') 
-		.on("mouseover", function(d) {		
+		.on("mouseover", function(d) {	
+            dot1.attr('r',10)	
             div.transition()		
                 .duration(100)		
                 .style("opacity", .9);	
@@ -106,7 +107,8 @@ d3.csv("BoxOffice.csv", function(error, data) {
                 .style("top", (d3.event.pageY - 28) + "px");
 		
             })
-          .on("mouseout", function(d) {		
+          .on("mouseout", function(d) {	
+            dot1.attr('r',3)	
             div.transition()		
                 .duration(400)		
                 .style("opacity", 0);	
@@ -136,7 +138,8 @@ d3.csv("BoxOffice.csv", function(error, data) {
          .attr('fill','#d73027');
 
 
-	  dot2.on("mouseover", function(d) {		
+	  dot2.on("mouseover", function(d) {
+            dot2.attr('r',10)		
             div.transition()		
                 .duration(100)		
                 .style("opacity", .9);	
@@ -145,7 +148,8 @@ d3.csv("BoxOffice.csv", function(error, data) {
                 .style("top", (d3.event.pageY - 28) + "px");
 		
             })
-          .on("mouseout", function(d) {		
+          .on("mouseout", function(d) {	
+            dot2.attr('r',3)	
             div.transition()		
                 .duration(400)		
                 .style("opacity", 0);	
