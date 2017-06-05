@@ -1,5 +1,5 @@
 // First Part: Create line chart 
-
+function draw2(){
 // Set the dimensions of the canvas / graph
 var	margin = {top: 30, right: 10, bottom: 30, left: 80},
 	width = 1300 - margin.left - margin.right,
@@ -44,13 +44,15 @@ for (i=0;i<=9;i++){
 
     
 // Adds the svg canvas
-var	svg = d3.select("#line2")
+var	svg = d3.select("#secondline")
 	.append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
- 
+ var div = d3.select("#secondline").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
 // Get the data
 d3.csv("BoxOffice.csv", function(error, data) {
 	data.forEach(function(d) {
@@ -58,7 +60,7 @@ d3.csv("BoxOffice.csv", function(error, data) {
 		//d.box = +d.box;
 		d.positive = +d.positive;
 		d.negative = +d.negative;
-		d.pred = +d.pred;
+		//d.pred = +d.pred;
         d.anger = +d.anger;
         d.anticipation = +d.anticipation;
         d.disgust = +d.disgust;
@@ -81,6 +83,7 @@ d3.csv("BoxOffice.csv", function(error, data) {
     y1.domain([0, 100]);
     y2.domain([0,40]);
 
+
    line2 = svg.append("path")	
         .data([data])
 		.attr("class", "line")
@@ -93,23 +96,21 @@ d3.csv("BoxOffice.csv", function(error, data) {
          .attr("r", 3)
          .attr("cx", function(d) { return x(d.date); })
          .attr("cy", function(d) { return y1(d.positive); })
-         .attr('fill','#66bd63')
-
-         
-		// .on("mouseover", function(d) {		
-        //     div.transition()		
-        //         .duration(100)		
-        //         .style("opacity", .9);	
-		// 	div.html(formatTime(d.date) + "<br/>"  + "Positivity: "+d.positive)	
-        //         .style("left", (d3.event.pageX) + "px")		
-        //         .style("top", (d3.event.pageY - 28) + "px");
+         .attr('fill','#66bd63') 
+		.on("mouseover", function(d) {		
+            div.transition()		
+                .duration(100)		
+                .style("opacity", .9);	
+			div.html(formatTime(d.date) + "<br/>"  + "Positivity: "+d.positive)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");
 		
-        //     })
-        //   .on("mouseout", function(d) {		
-        //     div.transition()		
-        //         .duration(400)		
-        //         .style("opacity", 0);	
-        // });
+            })
+          .on("mouseout", function(d) {		
+            div.transition()		
+                .duration(400)		
+                .style("opacity", 0);	
+        });
 	line3 = svg.append("path")	
         .data([data])
 		.attr("class", "line")
@@ -135,20 +136,20 @@ d3.csv("BoxOffice.csv", function(error, data) {
          .attr('fill','#d73027');
 
 
-	//   dot2.on("mouseover", function(d) {		
-    //         div.transition()		
-    //             .duration(100)		
-    //             .style("opacity", .9);	
-	// 		div.html(formatTime(d.date) + "<br/>"  + "Negativity: "+d.negative)	
-    //             .style("left", (d3.event.pageX) + "px")		
-    //             .style("top", (d3.event.pageY - 28) + "px");
+	  dot2.on("mouseover", function(d) {		
+            div.transition()		
+                .duration(100)		
+                .style("opacity", .9);	
+			div.html(formatTime(d.date) + "<br/>"  + "Negativity: "+d.negative)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");
 		
-    //         })
-    //       .on("mouseout", function(d) {		
-    //         div.transition()		
-    //             .duration(400)		
-    //             .style("opacity", 0);	
-    //     });
+            })
+          .on("mouseout", function(d) {		
+            div.transition()		
+                .duration(400)		
+                .style("opacity", 0);	
+        });
 
 
 	// Add the X Axis
@@ -223,20 +224,7 @@ for (i=0;i<=9;i++){
          .attr("cx", function(d) { return x(d.date); })
          .attr("cy", function(d) { return y2(d[emotion[i]]); })
          .attr('fill',color(emotion[i]))
-         .style('opacity',0)
-		.on("mouseover", function(d) {		
-            div.transition()		
-                .duration(100)		
-                .style("opacity", .9);	
-            div.html(formatTime(d.date) + "<br/>"  + emotion[i] +": "+d[emotion[i]])	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY - 28) + "px");
-            })
-          .on("mouseout", function(d) {		
-            div.transition()		
-                .duration(400)		
-                .style("opacity", 0);	
-        });
+         .style('opacity',0);
     }
 
 legend5.on('click',function(d){
@@ -404,3 +392,4 @@ svg.append('text')
 
         });
 
+};

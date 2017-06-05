@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+
 <style>
 body { font: 12px Arial;}
 
@@ -11,6 +12,7 @@ body { font: 12px Arial;}
 }
 
 
+
 .axisSteelBlue text{
   fill: steelblue;
 }
@@ -18,6 +20,11 @@ body { font: 12px Arial;}
 .axisRed text{
   fill: black;
 }
+.clear{
+    clear:both;
+}
+
+
 
 #sentiment {
         height: 360px;
@@ -112,6 +119,7 @@ header .intro-text .intro-heading {
   line-height: 50px;
   margin-bottom: 25px;
 }
+
 </style>
 
 <!--<script src="//d3js.org/d3.v3.min.js"></script>-->
@@ -131,10 +139,10 @@ header .intro-text .intro-heading {
 <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
 
 <!-- Latest compiled and minified JavaScript -->
-  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -154,28 +162,41 @@ header .intro-text .intro-heading {
 
 	<div data-role="header" data-position="fixed">
   
-        <p> <b> <h5> <center >Twitter Sentiment Analysis of Movie Review </center> </h5> </b> </p>
+        <p> <b> <h5> <center> Twitter Sentiment Analysis of Movie Review </center> </h5> </b> </p>
         <p> <center><a href = "https://twitter.com/Guardians"> #Gurdians of Galaxy Vol 2 </a> </center></p>
 	</div>
-
-
-  <div class = "row">
-       <div id="line1">
-         <div id='title'>
+  <div id='title'>
            
            <p> <b> <h4> <u><center> Performance Timeline </center> </u> </h4> </b>  </p>
          </div>
-    		<script src="line.js"></script>
 
-    </div>
-    </div>
-  
+  <!--<div class = "row">
+       <div id="line1">
+    		<script src="line.js"></script>  
+      </div>
+    </div>-->
 
-  <div class='row'>
-    <div id = 'line2'>
+<!--<div class = "row">
+    <div id = 'secondline'>
+    <script src="line2.js"></script>
+    </div>-->
+
+
+<div class="clear"></div>
+
+ <div class = "row">
+       <div id="line1">
+    		<script src="line.js"></script>  
+      </div>
+ </div>
+
+ <div class = "row">
+    <div id = 'secondline'>
     <script src="line2.js"></script>
     </div>
-  </div>
+
+ 
+   
 
   
   
@@ -256,9 +277,16 @@ header .intro-text .intro-heading {
       </table>
 
 </div>
+
+  
 </div>
 
 <script>
+function start(){
+  draw1();
+  draw2();
+}
+window.onload = start();
    document.getElementById("select").onchange = function(){
      var date = this.value;
   //   draw_donut(date);
