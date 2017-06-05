@@ -2,7 +2,7 @@
 
 // Set the dimensions of the canvas / graph
 function draw1(){
-var	margin = {top: 30, right: 10, bottom: 30, left: 80},
+var	margin = {top: 30, right: 30, bottom: 30, left: 80},
 	width = 1300 - margin.left - margin.right,
 	height = 270 - margin.top - margin.bottom;
  
