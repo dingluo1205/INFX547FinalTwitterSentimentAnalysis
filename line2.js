@@ -2,7 +2,7 @@
 function draw2(){
 // Set the dimensions of the canvas / graph
 var	margin = {top: 30, right: 10, bottom: 30, left: 80},
-	width = 1300 - margin.left - margin.right,
+	width = 1000 - margin.left - margin.right,
 	height = 270 - margin.top - margin.bottom;
  
 // Parse the date / time
